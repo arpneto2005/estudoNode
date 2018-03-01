@@ -1,20 +1,12 @@
-var express = require('express');
-var app = express();
+var app = require('./config/server');
+var msg = require('./modulo_server')();
 
-app.set('view engine', 'ejs');
+var rotaNoticias = require('./app/routes/noticias')(app);
 
-app.get('/', function(req, res){
-	res.send("<html> <body> Pagina Inicial. </body> </html>");
-});
+var rotaHome = require('./app/routes/home')(app);
 
-app.get('/tecnologia', function(req, res){
-	res.render("secao/tecnologia");
-});
-
-app.get('/moda', function(req, res){
-	res.send("<html> <body> Portal de Moda. </body> </html>");
-});
+var rotaFormulario = require('./app/routes/formulario_inclusao_noticias')(app);
 
 app.listen(3000, function(){
-	console.log('Servidor Express Rodando...');
+	console.log(msg);
 });
