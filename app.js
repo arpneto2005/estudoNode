@@ -1,12 +1,11 @@
 var app = require('./config/server');
-var msg = require('./modulo_server')();
 
 var rotaNoticias = require('./app/routes/noticias')(app);
 
 var rotaHome = require('./app/routes/home')(app);
 
-var rotaFormulario = require('./app/routes/formulario_inclusao_noticias')(app);
+var rotaFormInclusaoNoticia = require('./app/routes/form_inclusao_noticia')(app);
 
 app.listen(3000, function(){
-	console.log(msg);
+    console.log("Servidor ON");
 });
